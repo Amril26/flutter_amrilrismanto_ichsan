@@ -3,11 +3,9 @@
 * Point 1 : git adalah Version controll system yang digunakan para developer untuk berkolaborasi dalam management project secara bersamaan agar pengelolaan dalam pengembangan lebih mudah
 
 dalam git terdapat 3 Area yang biasanya digunakan yaitu: 
-    * working directory : dimana folder ini adalah folder lokal yang terdapat di device kita yang bisa kita edit kapan saja
-
-    * staging area : staging area adalah area dimana ketika working directory sudah melakukan peringah add dan commit di staging area ini belum memasuki repository
-
-    *repository : dimana project kita sudah ada pada github yang sudah terdistribusi
+    * working directory **>** dimana folder ini adalah folder lokal yang terdapat di device kita yang bisa kita edit kapan saja
+    * staging area **>** staging area adalah area dimana ketika working directory sudah melakukan peringah add dan commit di staging area ini belum memasuki repository
+    * repository **>** dimana project kita sudah ada pada github yang sudah terdistribusi
 
 * Point 2 : Perintah yang biasanya sering digunakan; 
     * git add adalah perintah untuk menambahakan sebuah perubahan project ke dalam staging area 
