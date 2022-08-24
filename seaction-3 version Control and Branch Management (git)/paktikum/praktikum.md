@@ -6,11 +6,11 @@ hasil dari prktik pada **seaction3** dengan [url github](https://github.com/Amri
 2. membuat branch **>** untuk ketik perintah pada terminal jika menggunakan CLI/GLI **git branch *nama-branch***
 
 3. implementasi gitpush, pull, stash, dan merge : 
-    **.** push -> ketik perintah **git push origin name-branch** untuk melakukan async pada repository
-    **.** pull -> ketik perintah **git pull origin name-branch** untuk mengambil source code dari branch lain dan langsung di merge
-    **.** stash -> ketik perintah **git stash** untuk melakukan perubahan secara sementara
-    **.** stash applay-> ketik perintah **git stash apply** menggunakan stash atau perubahan sementara
-    **.** merge-> ketik perintah **git merge *name-branch*** digunakan untuk melakukan merge atau menggabungkan antara 2 branch
+    * push -> ketik perintah **git push origin name-branch** untuk melakukan async pada repository
+    * pull -> ketik perintah **git pull origin name-branch** untuk mengambil source code dari branch lain dan langsung di merge
+    * stash -> ketik perintah **git stash** untuk melakukan perubahan secara sementara
+    * stash applay-> ketik perintah **git stash apply** menggunakan stash atau perubahan sementara
+    * merge-> ketik perintah **git merge *name-branch*** digunakan untuk melakukan merge atau menggabungkan antara 2 branch
 
 4. penyelesaiaan conflict dalam branch mengerjakan file dan line yang sama jika terjadi conflict seharunya yang dilakukan kita bisa menggunakan perubahan yang lama atau yang baru, dan juga bisa digunakan keduanya namun harus ditambahkan berbeda line pada branch master saat di merge
 
