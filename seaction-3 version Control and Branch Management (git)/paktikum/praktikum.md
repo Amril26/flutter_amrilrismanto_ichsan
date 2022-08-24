@@ -14,4 +14,4 @@ hasil dari prktik pada **seaction3** dengan [url github](https://github.com/Amri
 
 4. penyelesaiaan conflict dalam branch mengerjakan file dan line yang sama jika terjadi conflict seharunya yang dilakukan kita bisa menggunakan perubahan yang lama atau yang baru, dan juga bisa digunakan keduanya namun harus ditambahkan berbeda line pada branch master saat di merge
 
-5, no fast forward **>** perintah untuk mengabungkan branch dengan tambahan merge commit, agar dapat dilihat pada diff
+5, no fast forward **>** perintah untuk mengabungkan branch dengan tambahan merge commit, agar dapat dilihat pada diff **git merge --no-ff *name-branch***
