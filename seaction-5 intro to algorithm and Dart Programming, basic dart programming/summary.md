@@ -23,6 +23,6 @@ dart memiliki fitur berikut :
 * comparision adalah oprator perbandingan antara dua  variabel: ==, <=,>=, >, <;
 * contoh : bool comparision = false == true; result => false
 
-operator logical digunakna untuk mengabungkan kondisi untuk membandingkan variabel &&, ||, !;
+* operator logical digunakna untuk mengabungkan kondisi untuk membandingkan variabel &&, ||, !;
 * contoh : bool logical = 5==5 || 1 > 2; result => true
  
