@@ -15,14 +15,14 @@ dart memiliki fitur berikut :
  
 * point 3 :
 * dart mendukung oprator arithmatic seperti -, *, +, dan /, %;
-contoh : int tambah = 5 + 5; => result 10 
+* contoh : int tambah = 5 + 5; => result 10 
 
 * oprator assignment memberi memberi deklariisi pada variabel, = , +=, -=, *=, /=, %=;
-contoh : int angka = 5; result => 5 
+* contoh : int angka = 5; result => 5 
 
 * comparision adalah oprator perbandingan antara dua  variabel: ==, <=,>=, >, <;
-contoh : bool comparision = false == true; result => false
+* contoh : bool comparision = false == true; result => false
 
 operator logical digunakna untuk mengabungkan kondisi untuk membandingkan variabel &&, ||, !;
-contoh : bool logical = 5==5 || 1 > 2; result => true
+* contoh : bool logical = 5==5 || 1 > 2; result => true
  
