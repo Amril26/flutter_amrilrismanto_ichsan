@@ -16,7 +16,9 @@ saat menggunakan funtion Future maka fungsi ini harus selesai dijalankan terlebi
 Collection adalah suatu objek kumpulan data yang dapat menyimpan banyak data. 
 
 *  List : berfungsi untuk menyimpan berbagai macam data dan boleh ada duplikasi data pada collection ini. untuk memanggil sebuah nilai pada list harus menggunakan index dan awal index dimulai dari *0* dan seterusnya. 
-* Contoh : List contohList = ['Amril ', 'Rismanto ', Ichsan];
+* Contoh : List contohList = ['Amril ', 'Rismanto ', 'Ichsan'];
 
 * Map : menyimpan data dimana ada 2 objek yang harus di masukan yaitu key dan value. dimana key ini digunakan untuk mengambil value data pada tipe data *Map*. 
- 
+ * Contoh : Map contohMap = {'frist': 'Amril ',
+                              'mid': 'Rismanto ', 
+                              'last' : 'Ichsan'};
