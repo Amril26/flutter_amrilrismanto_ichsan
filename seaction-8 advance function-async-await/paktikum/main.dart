@@ -1,7 +1,7 @@
 import 'soal_dua.dart';
 import 'soal_satu.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
   // List dataList = [2, 3, 4];
   List _dataList = [2, 3, 4, 6, 7, 8, 9, 11];
   int _pengali = 3;
@@ -14,7 +14,8 @@ void main(List<String> args) {
   ];
 
   SeactionDelapanSoalSatu _soalSatu = SeactionDelapanSoalSatu();
-  List printResult = _soalSatu.soalSatu(dataList: _dataList, pengali: _pengali);
+  List printResult =
+      await _soalSatu.soalSatu(dataList: _dataList, pengali: _pengali);
   print('Befor not run function => ' + _dataList.toString());
   print('Result after list x pengali => ' + printResult.toString());
 

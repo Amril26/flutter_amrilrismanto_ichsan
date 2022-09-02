@@ -1,6 +1,6 @@
 class SeactionDelapanSoalSatu {
   // a. menerima 2 parameter yaitu list data dan pengali
-  List soalSatu({required List dataList, required int pengali}) {
+  Future<List> soalSatu({required List dataList, required int pengali}) async {
     //  list baru untuk menampung data baru dari perulangan list lama yang dikali pengali
     List newListValue = [];
     // perulangan dilakukan pada dataList
