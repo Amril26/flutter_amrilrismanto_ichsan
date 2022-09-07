@@ -1,19 +1,21 @@
+import 'hewan_oop.dart';
+
 class Mobil {
   final double maxBeratMuatan;
-  final List listHewan;
+  final List<Hewan> listHewan;
   Mobil({required this.maxBeratMuatan, required this.listHewan});
   List listMuatan = [];
 
   tambahMuataun() {
     double totalHewan = 0.0;
     for (var i = 0; i < listHewan.length; i++) {
-      if (listHewan[i] <= maxBeratMuatan) {
-        totalHewan += listHewan[i];
+      if (listHewan[i].berat <= maxBeratMuatan) {
+        totalHewan += listHewan[i].berat;
         if (totalHewan > maxBeratMuatan) {
-          print('sama lewati aja');
+          print('Berat tidak memadai');
           continue;
         } else {
-          listMuatan.add(listHewan[i]);
+          listMuatan.add(listHewan[i].berat);
         }
       }
     }
