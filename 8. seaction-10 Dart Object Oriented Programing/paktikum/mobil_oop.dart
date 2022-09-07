@@ -7,12 +7,13 @@ class Mobil {
   tambahMuataun() {
     double totalHewan = 0.0;
     for (var i = 0; i < listHewan.length; i++) {
-      totalHewan += listHewan[i];
-      if (totalHewan < maxBeratMuatan) {
-        if (totalHewan <= maxBeratMuatan && totalHewan < maxBeratMuatan) {
-          listMuatan.add(listHewan[i]);
-        } else {
+      if (listHewan[i] <= maxBeratMuatan) {
+        totalHewan += listHewan[i];
+        if (totalHewan > maxBeratMuatan) {
+          print('sama lewati aja');
           continue;
+        } else {
+          listMuatan.add(listHewan[i]);
         }
       }
     }
