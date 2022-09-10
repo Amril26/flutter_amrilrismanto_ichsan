@@ -1,6 +1,6 @@
 void main(List<String> args) {
-  int x = 12;
-  int y = 20;
+  int x = 2;
+  int y = 4;
   int xx = 12;
   int yy = 20;
 
