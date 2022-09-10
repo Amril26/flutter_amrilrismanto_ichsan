@@ -1,35 +1,47 @@
 void main(List<String> args) {
-  double x = 12;
-  double y = 20;
+  int x = 12;
+  int y = 20;
+  int xx = 12;
+  int yy = 20;
 
   KPT hasilKPT = KPT(x: x, y: y);
   final resultKPT = hasilKPT.hasil();
   print(resultKPT);
+
+  FPT hasilFPT = FPT(x: xx, y: yy);
+  final resultFPT = hasilFPT.hasil();
+  print(resultFPT);
 }
 
 class FPT extends Matematika {
-  final double x, y;
+  final int x, y;
   FPT({required this.x, required this.y});
 
+  int result = 0;
   @override
-  hasil() {}
+  hasil() {
+    while (result % y != 0) {
+      result -= x;
+    }
+    return 'hasil FPT dari $x dan $y adalah => $result';
+  }
 }
 
 class KPT extends Matematika {
-  double x, y;
-  KPT({required this.x, required this.y});
+  int x, y;
+  KPT({
+    required this.x,
+    required this.y,
+  });
+  int result = 0;
 
   @override
   hasil() {
-    while (true) {
-      x += x;
-      // y += y;
-      print(x);
-      // if (x == y) {
-      //   print(x);
-      //   break;
-      // }
+    result = x;
+    while (result % y != 0) {
+      result += x;
     }
+    return 'hasil KPT dari $x dan $y adalah => $result';
   }
 }
 
