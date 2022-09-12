@@ -5,7 +5,7 @@ Flutter adalah sebuah Framework yang membatu developer untuk membangun sebuah pr
 
 * Flutter dapat mudah dipahami dan produktivitas tinggi karena memiliki fitur hot reload dimana kita dapat melakukan pembaruan perubahan hanya dalam bebeapa detik saja. dalam pengembangan Flutter tentu memakai Sdk
 
-* SDKK adalah Sebuah alat alat yang membantu dalam proses pengembangan sebuah produk aplikasi dimana SDK adalah sebuah tools yang sangat lengkap untuk membantu developer.
+* SDK adalah Sebuah alat alat yang membantu dalam proses pengembangan sebuah produk aplikasi dimana SDK adalah sebuah tools yang sangat lengkap untuk membantu developer.
 
 * membuat project pertama kali dapat 2 cara yaitu mengetik tulisan pada terminal seperti ***flutter create nama_project*** dalam penamaan project flutter tidak boleh camel case. untuk cara kedua ada  dengan membuat pada IDE dengan menekan ***CTRL+P*** lalu klik create new project dan nanti akan memasukan nama project 
 
