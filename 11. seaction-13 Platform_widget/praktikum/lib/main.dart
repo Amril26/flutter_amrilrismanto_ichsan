@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:praktikum/pages/home/android/home_android.dart';
 import 'package:praktikum/pages/home/home_pages.dart';
 import 'package:praktikum/pages/home/ios/curent_index_page.dart';
 
@@ -12,12 +13,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
-      debugShowCheckedModeBanner: false,
-      // theme: ThemeData(
-      //   primarySwatch: Colors.blue,
-      // ),
-      home: CurentIndexPages(),
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomePageAndroid(),
     );
+    // return CupertinoApp(
+    //   debugShowCheckedModeBanner: false,
+    //   // theme: ThemeData(
+    //   //   primarySwatch: Colors.blue,
+    //   // ),
+    //   home: CurentIndexPages(),
+    // );
   }
 }

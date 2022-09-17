@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:praktikum/pages/home/ios/empty_page.dart';
 import 'package:praktikum/pages/home/ios/home_ios.dart';
 
 class CurentIndexPages extends StatelessWidget {
@@ -14,27 +15,21 @@ class CurentIndexPages extends StatelessWidget {
     ),
     const BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.chat_bubble_2),
-      label: 'Calls',
+      label: 'Chats',
     ),
     const BottomNavigationBarItem(
       icon: Icon(CupertinoIcons.settings),
-      label: 'Calls',
+      label: 'Settings',
     ),
   ];
 
   Widget _indexPages({required int index}) => index == 0
-      ? Container(
-          color: CupertinoColors.systemRed,
-        )
+      ? const EmptyPage(namePage: 'Contacs')
       : index == 1
-          ? Container(
-              color: CupertinoColors.activeBlue,
-            )
+          ? const EmptyPage(namePage: 'Calls')
           : index == 2
               ? const HomePageIos()
-              : Container(
-                  color: CupertinoColors.systemYellow,
-                );
+              : const EmptyPage(namePage: 'Settings');
 
   @override
   Widget build(BuildContext context) {
