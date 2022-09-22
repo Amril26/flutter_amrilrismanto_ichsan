@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:praktikum/provider/get/list_user_service.dart';
 import 'package:provider/provider.dart';
 
@@ -14,10 +12,10 @@ class Soal2 extends StatelessWidget {
         Provider.of<GetUserListProvider>(context, listen: false);
     provUserGet.getDataUsers();
     return GridView.builder(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 70,
-          childAspectRatio: 1,
+          maxCrossAxisExtent: 100,
+          childAspectRatio: 2/4,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20),
       itemCount: provUserGet.listUser.length,
