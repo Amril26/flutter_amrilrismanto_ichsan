@@ -15,6 +15,7 @@ class Soal1 extends StatelessWidget {
     provUserGet.getDataUsers();
 
     return ListView.builder(
+        padding: const EdgeInsets.symmetric(vertical: 16),
         itemCount: provUserGet.listUser.length,
         itemBuilder: (context, index) {
           return ListTile(
