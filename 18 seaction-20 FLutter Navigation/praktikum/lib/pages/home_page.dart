@@ -1,99 +1,94 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'package:praktikum/pages/add_contact.dart';
+import 'package:praktikum/providers/contact_provider.dart';
+import 'package:praktikum/themes/style_all.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
-  final Random _random = Random();
+  static String rootNamed = '/';
+  const HomePage({Key? key}) : super(key: key);
 
   _appBar() {
     return AppBar(
-      backgroundColor: Colors.blueGrey,
-      title: const Text('Gallery'),
-      centerTitle: true,
+      title: const Text('Contacs'),
     );
   }
 
-  _cardImage(BuildContext context, {required String urlImage}) {
-    return GestureDetector(
-      onTap: () {
-        showModalBottomSheet(
-          context: context,
-          builder: (context) => SizedBox(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-              child: Image.network(
-                urlImage,
-                height: 200,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-          ),
-        );
-      },
-      onDoubleTap: () {
-        showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) => AlertDialog(
-            backgroundColor: Colors.white,
-            title: Text('Gallery'),
-            content: SizedBox(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.network(
-                    urlImage,
-                    height: 200,
-                    fit: BoxFit.fitWidth,
-                  )
-                ],
-              ),
-            ),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    'Tutup',
-                    style: TextStyle(
-                        color: Colors.blueGrey, fontWeight: FontWeight.bold),
-                  ))
-            ],
-          ),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          image: DecorationImage(
-            image: NetworkImage(urlImage),
-            fit: BoxFit.fill,
-          ),
-        ),
+  Widget _cardMyContacts({required String name, required String nomor}) {
+    return ListTile(
+      leading: CircleAvatar(
+        child: Text(name[0]),
+      ),
+      title: Text(
+        name,
+        style: h1,
+      ),
+      subtitle: Text(
+        nomor,
+        style: p1,
       ),
     );
   }
 
-  _bodyContent(BuildContext context) {
-    return GridView.count(
-      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 16),
-      crossAxisCount: 3,
-      children: List.generate(
-          30,
-          (index) => _cardImage(context,
-              urlImage:
-                  'https://picsum.photos/id/${index + _random.nextInt(50)}/200/300')),
+  _emptyContent() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/empty_contacs.png',
+            width: 200,
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Text(
+            'Contact kamu kosong nih,\n Tambahkan teman untuk mengobrol',
+            textAlign: TextAlign.center,
+            style: h1.copyWith(fontSize: 16, color: Colors.grey),
+          )
+        ],
+      ),
     );
   }
 
+  Widget _bodyContent() {
+    return Consumer<ContactsProvider>(
+      builder: (context, value, child) => value.listContacts.isNotEmpty
+          ? ListView.builder(
+              itemCount: value.listContacts.length,
+              itemBuilder: (context, index) => _cardMyContacts(
+                  name: value.listContacts[index].name,
+                  nomor: value.listContacts[index].nomor),
+            )
+          : _emptyContent(),
+    );
+  }
+
+  Widget _floationgActionButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        // named routes
+        Navigator.pushNamed(context, AddContact.rootNamed).then(
+            (value) => context.read<ContactsProvider>().getDataContacts());
+        // tanpa named routes
+        // Navigator.push(
+        //         context, MaterialPageRoute(builder: (context) => AddContact()))
+        //     .then(
+        //         (value) => context.read<ContactsProvider>().getDataContacts());
+      },
+      child: const Icon(Icons.person_add_alt_rounded),
+    );
+  }
+
+  //NOTE: CORE CODE
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF252525),
+      backgroundColor: Colors.white,
       appBar: _appBar(),
-      body: _bodyContent(context),
+      body: _bodyContent(),
+      floatingActionButton: _floationgActionButton(context),
     );
   }
 }
