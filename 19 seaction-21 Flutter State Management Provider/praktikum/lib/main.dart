@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ContactsProvider()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'State Management',
         initialRoute: HomePage.rootNamed,
         debugShowCheckedModeBanner: false,
         routes: {

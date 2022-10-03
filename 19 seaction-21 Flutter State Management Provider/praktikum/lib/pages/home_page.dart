@@ -68,14 +68,8 @@ class HomePage extends StatelessWidget {
   Widget _floationgActionButton(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        // named routes
         Navigator.pushNamed(context, AddContact.rootNamed).then(
             (value) => context.read<ContactsProvider>().getDataContacts());
-        // tanpa named routes
-        // Navigator.push(
-        //         context, MaterialPageRoute(builder: (context) => AddContact()))
-        //     .then(
-        //         (value) => context.read<ContactsProvider>().getDataContacts());
       },
       child: const Icon(Icons.person_add_alt_rounded),
     );
