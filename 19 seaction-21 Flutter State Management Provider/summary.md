@@ -1,4 +1,4 @@
-*******************************State Management Provider**************************
+*******************************State Management Bloc**************************
 
 * **Introduction ** dalam pengembangan aplikasi perubahan suatu tampilan karena kita menekan sebuah aksi akan sering dilakukan, namun didalam flutter terdapat bebrapa cara yaitu di sebuth sebuah state dimana state tersebut akan merubah suatu widget atau tampilan secara dynamic, biasanya state dimiliki oleh Widget parrent **StatefullWidget** dimana dalam turunan akan dapat menampilkan tampilan secara dynamic.
 
