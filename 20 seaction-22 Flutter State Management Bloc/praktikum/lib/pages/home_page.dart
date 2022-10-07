@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:praktikum/bloc/bloc/contact_bloc_bloc.dart';
 import 'package:praktikum/pages/add_contact.dart';
-import 'package:praktikum/providers/contact_provider.dart';
 import 'package:praktikum/themes/style_all.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   static String rootNamed = '/';
@@ -53,23 +53,29 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _bodyContent() {
-    return Consumer<ContactsProvider>(
-      builder: (context, value, child) => value.listContacts.isNotEmpty
-          ? ListView.builder(
-              itemCount: value.listContacts.length,
-              itemBuilder: (context, index) => _cardMyContacts(
-                  name: value.listContacts[index].name,
-                  nomor: value.listContacts[index].nomor),
-            )
-          : _emptyContent(),
-    );
+    return BlocBuilder<ContactBlocBloc, ContactBlocState>(
+        builder: ((context, state) {
+      if (state is ContactBlocLoaded) {
+        return ListView.builder(
+          itemCount: state.contacts.length,
+          itemBuilder: (context, index) => _cardMyContacts(
+              name: '${state.contacts[index].name}',
+              nomor: '${state.contacts[index].nomor}'),
+        );
+      } else {
+        return Container(
+          color: Colors.red,
+        );
+      }
+    }));
+    // : _emptyContent(),
+    // );
   }
 
   Widget _floationgActionButton(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        Navigator.pushNamed(context, AddContact.rootNamed).then(
-            (value) => context.read<ContactsProvider>().getDataContacts());
+        Navigator.pushNamed(context, AddContact.rootNamed);
       },
       child: const Icon(Icons.person_add_alt_rounded),
     );

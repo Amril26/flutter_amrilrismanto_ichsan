@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:praktikum/providers/contact_provider.dart';
+import 'package:praktikum/bloc/bloc/contact_bloc_bloc.dart';
 import 'package:praktikum/themes/style_all.dart';
 import 'package:provider/provider.dart';
 
@@ -44,6 +44,7 @@ class AddContact extends StatelessWidget {
           ),
           TextFormField(
             controller: _controllerNomor,
+            keyboardType: TextInputType.number,
             decoration: InputDecoration(
               prefixIcon: const Icon(
                 Icons.call,
@@ -60,7 +61,9 @@ class AddContact extends StatelessWidget {
             height: 50,
             color: Colors.blue,
             onPressed: () {
-              context.read<ContactsProvider>().addCOntact(context, name: _controllerName.text, nomor: _controllerNomor.text);
+              context.read<ContactBlocBloc>().add(AddContactsEvent(
+                  name: _controllerName.text, nomor: _controllerNomor.text));
+              Navigator.pop(context);
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
