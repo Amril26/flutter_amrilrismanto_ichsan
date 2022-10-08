@@ -7,14 +7,14 @@ part 'contact_bloc_event.dart';
 part 'contact_bloc_state.dart';
 
 class ContactBlocBloc extends Bloc<ContactBlocEvent, ContactBlocState> {
-  ContactBlocBloc() : super(ContactBlocInitial(contacts: [])) {
+  ContactBlocBloc() : super(ContactBlocInitial()) {
     List contact = [];
 
     on<AddContactsEvent>(
       (event, emit) {
         contact.add(ContactsModel(name: event.name, nomor: event.nomor));
 
-        emit(ContactBlocLoaded(contacts: contact));
+        emit(ContactBlocLoaded(contact));
       },
     );
   }

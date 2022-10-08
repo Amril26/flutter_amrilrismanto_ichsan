@@ -2,37 +2,36 @@ part of 'contact_bloc_bloc.dart';
 
 @immutable
 abstract class ContactBlocState extends Equatable {
-  List contacts;
-
-  ContactBlocState({required this.contacts});
+  ContactBlocState();
   @override
-  // TODO: implement props
-  List<Object?> get props => [contacts];
+  List<Object?> get props => [];
 }
 
 class ContactBlocInitial extends ContactBlocState {
-  ContactBlocInitial({required super.contacts});
+  ContactBlocInitial();
 
   @override
   List<Object?> get props => [];
 }
 
 class ContactBlocLoading extends ContactBlocState {
-  ContactBlocLoading({required super.contacts});
+  ContactBlocLoading(contacts);
 
   @override
   List<Object?> get props => [];
 }
 
 class ContactBlocLoaded extends ContactBlocState {
-  ContactBlocLoaded({required super.contacts});
+  List contacts;
+
+  ContactBlocLoaded(this.contacts);
   @override
   // TODO: implement props
   List<Object?> get props => [contacts];
 }
 
 class ContactBlocFailed extends ContactBlocState {
-  ContactBlocFailed({required super.contacts});
+  ContactBlocFailed();
 
   @override
   // TODO: implement props

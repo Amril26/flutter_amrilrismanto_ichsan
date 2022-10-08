@@ -61,9 +61,12 @@ class AddContact extends StatelessWidget {
             height: 50,
             color: Colors.blue,
             onPressed: () {
-              context.read<ContactBlocBloc>().add(AddContactsEvent(
-                  name: _controllerName.text, nomor: _controllerNomor.text));
-              Navigator.pop(context);
+              if (_controllerName.text.isNotEmpty &&
+                  _controllerNomor.text.isNotEmpty) {
+                context.read<ContactBlocBloc>().add(AddContactsEvent(
+                    name: _controllerName.text, nomor: _controllerNomor.text));
+                Navigator.pop(context);
+              }
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
