@@ -11,7 +11,7 @@ dalam aplikasi terdapat suatu feature yang akan mengambil sebuah data dari serve
 (fromJson) dimana mengubah struktur json menjadi struktu data/jsonModel
 ************************************************************************
 
-* **Struktur Request**
+* **Struktur Request**s
  * Url : adalah sebuah link yang menjadikan halaman Akses API
  * Method : method adalah seuatu fungsi yang digunakan untuk menunjukan aksi yang diinginkan seperti POST, Delete, Put, Get
  * Header : digunakan untuk memberikan informasi tambahan yang akan di post
