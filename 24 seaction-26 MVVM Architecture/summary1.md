@@ -6,7 +6,7 @@ dalam penulisan sebuah program dalam membbuat suatu produk aplikasi pasti akan m
 dimana keuntungan menggunakan adalah 
     * jika ada perubahan suatu tampilan view maka tidak merubah semua tampilan dan mudha di cari kodenya
     * Mintainablility : mudah saat waktu maintance terkait tampilan tidak tertumpuk bersama logic
-    * Testability : dapat meningkatkan produktivitas pada pengujian antara view dan logic terpisah  s
+    * Testability : dapat meningkatkan produktivitas pada pengujian antara view dan logic terpisah 
 
 ************************************************************************
  
