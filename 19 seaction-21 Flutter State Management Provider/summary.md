@@ -14,7 +14,7 @@ namun ketika perubahan hanya sedikit kekurangan dari penggunaan **StatefullWidge
 - daftarkan state provider gunakan widget **MultiProvider** pada **root awal** widget
 - buat class yang extends dari class ChangeNotifier
 - ketika ingin memanggil atau membuat sebuah perubahan state **gunakan context.read<namaClass>().namamethod()**
-- ketika ingin memanggil sebuah nilai state gunakan **context.watch<namaclass>().value**
+- ketika ingin memanggil sebuah nilai state gunakan **context.watch<namaclass>().value**s 
 
 
 
