@@ -17,6 +17,6 @@ tujuan penggunaan unit test biasanya dapat mengola berbagai jenis input, memasti
 
 * Cara Kerja Mocking 
 * dimana suatu object dibuat bentuk tiruannya dimana tiduran tersebut memiliki input dan output yang sama dengan yang asli, bentuk tiruan menghilang ketergantungan pada sistem eksternal
-*  menambahkan despendenci build_runner dan mockito pada ***dev_despendencies***
+*  menambahkan despendenci build_runner dan mockito pada ***dev_despendencies***s
 ************************************************************************
  

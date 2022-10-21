@@ -9,8 +9,8 @@ class ServiceData extends ChangeNotifier {
   String _resultData = '';
   String get resultData => _resultData;
 
-  List<UserModel> _listDataUser = [];
-  List<UserModel> get listDataUser => _listDataUser;
+  List _listDataUser = [];
+  List get listDataUser => _listDataUser;
 
   bool _showGet = false;
   bool get showGet => _showGet;
@@ -24,7 +24,7 @@ class ServiceData extends ChangeNotifier {
   bool _showDelete = false;
   bool get showDelete => _showDelete;
 
-  Future getData() async {
+  getData() async {
     _listDataUser = [];
     final response = await _requestApi.get(url: BaseUrl.get);
     for (var item in response['data']) {
@@ -39,8 +39,9 @@ class ServiceData extends ChangeNotifier {
     return _listDataUser;
   }
 
-  Future postData(BuildContext context,
-      {required String name, required String job}) async {
+  postData(
+      /*BuildContext context, */ {required String name,
+      required String job}) async {
     final Map<String, dynamic> dataBody = {
       'name': name,
       'job': job,
@@ -56,26 +57,26 @@ class ServiceData extends ChangeNotifier {
         _showPut = false;
         _showDelete = false;
       } else {
-        return ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              backgroundColor: Colors.redAccent,
-              content: Text(
-                'Gagal',
-                style: TextStyle(color: Colors.white),
-              )),
-        );
+        // return ScaffoldMessenger.of(context).showSnackBar(
+        //   const SnackBar(
+        //       backgroundColor: Colors.redAccent,
+        //       content: Text(
+        //         'Gagal',
+        //         style: TextStyle(color: Colors.white),
+        //       )),
+        // );
       }
       // return response;
     } catch (e) {
       print('eroorrrrrr');
-      return ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            backgroundColor: Colors.redAccent,
-            content: Text(
-              'Gagal',
-              style: TextStyle(color: Colors.white),
-            )),
-      );
+      // return ScaffoldMessenger.of(context).showSnackBar(
+      //   const SnackBar(
+      //       backgroundColor: Colors.redAccent,
+      //       content: Text(
+      //         'Gagal',
+      //         style: TextStyle(color: Colors.white),
+      //       )),
+      // );
     }
     notifyListeners();
   }

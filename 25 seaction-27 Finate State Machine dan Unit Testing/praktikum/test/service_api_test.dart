@@ -8,20 +8,30 @@ class MockServiceData extends Mock implements ServiceData {}
 void main() {
   MockServiceData mockServiceDataProv = MockServiceData();
 
-  test('demo get data provider', () async {
-    ServiceData _data = ServiceData();
-    await _data.getData();
-    expect(_data.listDataUser, isList);
-    expect(_data.listDataUser.isNotEmpty, true);
-    // when(await mockServiceDataProv.getData())
-    //     .thenReturn(() async => <UserModel>[
-    //           UserModel(
-    //             fristName: 'Michael',
-    //             lastName: 'Lawson',
-    //             email: 'michael.lawson@reqres.in',
-    //             avatar: 'https://reqres.in/img/faces/7-image.jpg',
-    //           )
-    //         ]);
-    // expect(mockServiceDataProv.listDataUser, isList);
+  group('testing post, get, update, delete service data ', () {
+    test('data yang di ambil adalah list', () async {
+      when(mockServiceDataProv.getData()).thenAnswer((_) => [
+            UserModel(
+              fristName: 'Michael',
+              lastName: 'Lawson',
+              email: 'michael.lawson@reqres.in',
+              avatar: 'https://reqres.in/img/faces/7-image.jpg',
+            )
+          ]);
+      expect(await mockServiceDataProv.getData(), isList);
+      expect(await mockServiceDataProv.getData(), isNotEmpty);
+    });
+
+    test('data yang di ambil adalah list', () async {
+      when(mockServiceDataProv.postData(name: 'Amril', job: 'ngelamun'))
+          .thenAnswer(
+        (_) => {
+          'name': 'Amril',
+          'job': 'ngelamun',
+        },
+      );
+      expect(await mockServiceDataProv.postData(name: 'Amril', job: 'ngelamun'),
+          isMap);
+    });
   });
 }

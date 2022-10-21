@@ -69,8 +69,10 @@ class HomePage extends StatelessWidget {
           RaisedButton(
             color: Colors.blue,
             onPressed: () async {
-              await context.read<ServiceData>().postData(context,
-                  name: _inputName.text, job: _inputJob.text);
+              await context.read<ServiceData>().postData(
+                  /* context,*/
+                  name: _inputName.text,
+                  job: _inputJob.text);
             },
             child: const Text(
               'Post',
