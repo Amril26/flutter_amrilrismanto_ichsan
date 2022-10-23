@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project/helper/themes.dart';
+import 'package:project/pages/message_clients_page.dart';
 import 'package:project/pages/widget/card_project.dart';
+import 'package:project/providers/add_message_provider.dart';
 import 'package:project/widget/form_custom.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   static String rootNamed = 'home-Page';
@@ -103,12 +106,12 @@ class HomePage extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const SizedBox(
-          height: 18,
+          height: 20,
         ),
         Text('ただ一つの夢結んでゆずれない\nJangan Pernah Menyerah pada mimpi satu-satunya',
             style: h2.copyWith(fontSize: 16, color: txPrimary)),
         const SizedBox(
-          height: 18,
+          height: 20,
         ),
         Text('What Skill I Have For You',
             style: gf1.copyWith(fontSize: 25, fontWeight: FontWeight.w600)),
@@ -121,80 +124,58 @@ class HomePage extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        GridView.count(
+        ListView(
           shrinkWrap: true,
+          padding: EdgeInsets.zero,
           physics: const NeverScrollableScrollPhysics(),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: colorPrimary,
+          children: [
+            ListTile(
+              minLeadingWidth: 0,
+              hoverColor: colorPrimary,
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                "Development Mobile App",
+                style: h2.copyWith(
+                    color: txPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const FlutterLogo(
-                    size: 50,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Development Mobile App",
-                    style: h1.copyWith(color: Colors.white),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
-                    textAlign: TextAlign.center,
-                    style: h2.copyWith(color: Colors.white),
-                  )
-                ],
+              subtitle: Text(
+                "Design pattern, OOP, Performance and optimization, UI best practice, Prototyping, User research and many more.",
+                style: h2.copyWith(fontSize: 12),
+              ),
+              trailing: CircleAvatar(
+                backgroundColor: colorPrimary.withOpacity(0.4),
+                child: const FlutterLogo(),
               ),
             ),
-            Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: colorPrimary,
+            ListTile(
+              minLeadingWidth: 0,
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                "UI/UX",
+                style: h2.copyWith(
+                    color: txPrimary,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
+              subtitle: Text(
+                "Design pattern, OOP, Performance and optimization, UI best practice, Prototyping, User research and many more.",
+                style: h2.copyWith(fontSize: 12),
+              ),
+              trailing: CircleAvatar(
+                backgroundColor: colorPrimary.withOpacity(0.4),
+                child: Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Image.asset(
                     'assets/figma_logo.png',
                     height: 50,
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "UI/UX",
-                    style: h1.copyWith(color: Colors.white),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
-                    textAlign: TextAlign.center,
-                    style: h2.copyWith(color: Colors.white),
-                  )
-                ],
+                ),
               ),
-            ),
+            )
           ],
-        )
+        ),
       ],
     );
   }
@@ -218,43 +199,6 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-      ],
-    );
-  }
-
-  Widget _testimoni() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text('Contact US',
-            style: gf1.copyWith(fontSize: 25, fontWeight: FontWeight.w600)),
-        const SizedBox(
-          height: 16,
-        ),
-        const Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text:
-                    'if you need colaboration or give me project can contact my on the form',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Color(
-                    0XFF252525,
-                  ),
-                ),
-              ),
-              TextSpan(
-                text: ' you\'d like to cantact below',
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500),
-              ),
-            ],
-          ),
-        )
       ],
     );
   }
@@ -317,45 +261,42 @@ class HomePage extends StatelessWidget {
           minWidth: double.infinity,
           color: colorPrimary,
           onPressed: () {
+            context.read<AddMessageProviders>().addMessage(
+                name: _textEmail.text, description: _textEmail.text);
             showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                title: const Text(
-                  'Message',
-                  style: TextStyle(color: Colors.blue),
-                ),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _textEmail.text,
-                      style: const TextStyle(
-                          color: Color(0XFF252525),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
+                barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  Future.delayed(const Duration(seconds: 3), () {
+                    Navigator.pop(context);
+                  });
+                  return AlertDialog(
+                    title: const Text(
+                      'Message',
+                      style: TextStyle(color: Colors.blue),
                     ),
-                    Text(
-                      _textEmail.text,
-                      style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12,
-                      ),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          _textEmail.text,
+                          style: const TextStyle(
+                              color: Color(0XFF252525),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        Text(
+                          _textDescription.text,
+                          style: const TextStyle(
+                            color: Colors.grey,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Text(
-                      _textDescription.text,
-                      style: const TextStyle(
-                        color: Color(0XFF252525),
-                        fontSize: 13,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
+                  );
+                });
           },
           child: const Text(
             'Submit',
@@ -392,7 +333,7 @@ class HomePage extends StatelessWidget {
             ),
             title: const Text('Contact Us'),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.pushNamed(context, MessageClientPage.rootNamed);
             },
           ),
           ListTile(
@@ -437,6 +378,9 @@ class HomePage extends StatelessWidget {
             height: 30,
           ),
           _myProjects(),
+          const SizedBox(
+            height: 30,
+          ),
           const SizedBox(
             height: 30,
           ),
