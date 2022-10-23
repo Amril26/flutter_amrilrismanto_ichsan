@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/helper/themes.dart';
 
 class FormCustomEdit extends StatelessWidget {
   const FormCustomEdit(
@@ -22,7 +23,7 @@ class FormCustomEdit extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(vertical: 16),
           decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.2),
+              color: colorPrimary.withOpacity(0.2),
               borderRadius: BorderRadius.circular(5)),
           child: TextField(
             controller: controllerEditing,

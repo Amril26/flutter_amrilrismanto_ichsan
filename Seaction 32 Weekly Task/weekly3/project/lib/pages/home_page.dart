@@ -1,84 +1,97 @@
 import 'package:flutter/material.dart';
 import 'package:project/helper/themes.dart';
+import 'package:project/pages/widget/card_project.dart';
 import 'package:project/widget/form_custom.dart';
 
 class HomePage extends StatelessWidget {
+  static String rootNamed = 'home-Page';
   HomePage({Key? key}) : super(key: key);
-  final TextEditingController _textFirstName = TextEditingController();
-  final TextEditingController _textLastName = TextEditingController();
   final TextEditingController _textEmail = TextEditingController();
   final TextEditingController _textDescription = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  PreferredSize _appBar() {
-    return PreferredSize(
-        child: AppBar(
-          backgroundColor: Colors.white,
-          automaticallyImplyLeading: false,
-          actions: [
-            Container(
-              padding: EdgeInsets.all(3),
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: colorPrimary),
-                  shape: BoxShape.circle),
-              child: IconButton(
-                padding: EdgeInsets.zero,
-                onPressed: () {
-                  _scaffoldKey.currentState!.openDrawer();
-                },
-                icon: Icon(
-                  Icons.clear_all_rounded,
-                  color: colorPrimary,
-                ),
-              ),
-            ),
-          ],
-          title: Text(
-            'Amril Rismanto Ichsan',
-            style: gf1,
+  _appBar() {
+    return AppBar(
+      backgroundColor: Colors.white,
+      automaticallyImplyLeading: false,
+      actions: [
+        IconButton(
+          padding: EdgeInsets.zero,
+          onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          },
+          icon: const Icon(
+            Icons.clear_all_rounded,
+            color: colorPrimary,
+            size: 24,
           ),
-          elevation: 0.5,
         ),
-        preferredSize: const Size.fromHeight(65));
+      ],
+      title: Text.rich(TextSpan(children: [
+        TextSpan(text: 'Amril', style: gf1),
+        TextSpan(text: 'Risman', style: gf1.copyWith(color: colorPrimary))
+      ])),
+      // ),
+      elevation: 0,
+    );
   }
 
-  _welcomeContent(BuildContext context) {
+  Widget _welcomeContent(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.3,
+          child: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.25,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.blue.withOpacity(0.2),
+                        blurRadius: 18,
+                      )
+                    ],
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(10),
+                    image: const DecorationImage(
+                        image: AssetImage(
+                          'assets/bg.png',
+                        ),
+                        fit: BoxFit.fill)),
+              ),
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: colorPrimary,
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 5),
+                      image: const DecorationImage(
+                        image: AssetImage('assets/person.png'),
+                      ),
+                    ),
+                  ))
+            ],
+          ),
+        ),
         const SizedBox(
-          height: 50,
+          height: 16,
         ),
         Text(
-          'Hey There,\n I\'m Amril Rismanto Ichsan',
-          style: h1.copyWith(fontSize: 30),
+          'Amril Rismanto Ichsan',
+          style: gf1.copyWith(fontSize: 20),
         ),
         const SizedBox(
           height: 8,
         ),
-        const Text(
-            'ただ一つの夢結んでゆずれない\nJangan Pernah Menyerah pada mimpi satu-satunya',
-            style: h2),
-        const SizedBox(
-          height: 50,
-        ),
-        Stack(
-          children: [
-            Image.asset(
-              'assets/background.png',
-              width: double.infinity,
-              height: 300,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Image.asset(
-                'assets/person.png',
-                height: 400,
-              ),
-            ),
-          ],
+        Text(
+          'Flutter Developer',
+          style: gf1.copyWith(fontSize: 14, color: Colors.grey),
         ),
       ],
     );
@@ -89,8 +102,22 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('About Us', style: h1.copyWith(fontSize: 18)),
-        const Text('What can I help you with', style: h2),
+        const SizedBox(
+          height: 18,
+        ),
+        Text('ただ一つの夢結んでゆずれない\nJangan Pernah Menyerah pada mimpi satu-satunya',
+            style: h2.copyWith(fontSize: 16, color: txPrimary)),
+        const SizedBox(
+          height: 18,
+        ),
+        Text('What Skill I Have For You',
+            style: gf1.copyWith(fontSize: 25, fontWeight: FontWeight.w600)),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+            'see complemently what skill i will offer for you and other clients',
+            style: h2),
         const SizedBox(
           height: 16,
         ),
@@ -172,12 +199,36 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _contactMy() {
+  Widget _myProjects() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Projects',
+            style: gf1.copyWith(fontSize: 25, fontWeight: FontWeight.w600)),
+        const SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          height: 200,
+          child: ListView.builder(
+            itemCount: 4,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) => CardProject(
+              index: index,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _testimoni() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text('Contact US', style: h1.copyWith(fontSize: 18)),
+        Text('Contact US',
+            style: gf1.copyWith(fontSize: 25, fontWeight: FontWeight.w600)),
         const SizedBox(
           height: 16,
         ),
@@ -208,7 +259,44 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  _formContact(BuildContext context) {
+  Widget _contactMy() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text('Contact US',
+            style: gf1.copyWith(fontSize: 25, fontWeight: FontWeight.w600)),
+        const SizedBox(
+          height: 16,
+        ),
+        const Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text:
+                    'if you need colaboration or give me project can contact my on the form',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(
+                    0XFF252525,
+                  ),
+                ),
+              ),
+              TextSpan(
+                text: ' you\'d like to cantact below',
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.blue,
+                    fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _formContact(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -224,8 +312,10 @@ class HomePage extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        RaisedButton(
-          color: Colors.blue,
+        FlatButton(
+          height: 50,
+          minWidth: double.infinity,
+          color: colorPrimary,
           onPressed: () {
             showDialog(
               context: context,
@@ -239,7 +329,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      _textFirstName.text + ' ' + _textLastName.text,
+                      _textEmail.text,
                       style: const TextStyle(
                           color: Color(0XFF252525),
                           fontSize: 16,
@@ -346,9 +436,13 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          _contactMy(),
+          _myProjects(),
           const SizedBox(
             height: 30,
+          ),
+          _contactMy(),
+          const SizedBox(
+            height: 10,
           ),
           _formContact(context),
         ],
